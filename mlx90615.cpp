@@ -18,7 +18,7 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *************************************************************************/
  
- #include "MLX90615.h"
+ #include "mlx90615.h"
 
 MLX90615::MLX90615(uint8_t i2c_addr) {
   i2c_addr_ = i2c_addr;
