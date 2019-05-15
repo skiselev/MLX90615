@@ -55,12 +55,15 @@ float MLX90615::get_object_temp() {
 
 uint16_t MLX90615::read_word16(uint8_t reg) {
   uint16_t data;
-
+#ifdef __SAM3X8E__ 
+  Wire.requestFrom(i2c_addr_, 3, reg, 1, true); 
+#else
   Wire.beginTransmission(i2c_addr_);
   Wire.write(reg);
   Wire.endTransmission(false);
   
   Wire.requestFrom(i2c_addr_, (uint8_t)3);
+#endif
   data = Wire.read();       // read low byte
   data |= Wire.read() << 8; // read high byte
 
